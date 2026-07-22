@@ -1,11 +1,11 @@
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 
 import SectionHeader from "../../features/home/components/SectionHeader";
 import TechCard from "../../features/home/components/TechCard";
 import techStack from "../../features/home/data/techStack";
 
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: {},
 
   show: {
@@ -16,7 +16,8 @@ const containerVariants = {
 };
 
 
-const itemVariants = {
+
+const itemVariants: Variants = {
   hidden: {
     opacity: 0,
     y: 40,
@@ -30,7 +31,7 @@ const itemVariants = {
 
     transition: {
       duration: 0.6,
-      ease: "easeOut",
+      ease: [0.22, 1, 0.36, 1],
     },
   },
 };
@@ -44,34 +45,47 @@ function Technologies() {
 
     <section
       id="technologies"
-      className="bg-[#0b0b0c] py-16 md:py-20"
+      className="
+      bg-[#0b0b0c]
+      py-16
+      md:py-20
+      "
     >
 
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+      <div
+        className="
+        mx-auto
+        max-w-7xl
+        px-4
+        sm:px-6
+        "
+      >
 
 
 
         {/* Header Animation */}
 
+
         <motion.div
 
           initial={{
-            opacity:0,
-            y:30
+            opacity: 0,
+            y: 30,
           }}
 
           whileInView={{
-            opacity:1,
-            y:0
+            opacity: 1,
+            y: 0,
           }}
 
           viewport={{
-            amount:0.3
+            amount: 0.3,
+            once: true,
           }}
 
           transition={{
-            duration:0.7
+            duration: 0.7,
           }}
 
         >
@@ -87,12 +101,15 @@ function Technologies() {
 
 
 
+
         {/* Cards Animation */}
 
 
         <motion.div
 
           className="
+          mt-10
+
           grid
           grid-cols-2
           gap-4
@@ -113,14 +130,15 @@ function Technologies() {
           whileInView="show"
 
           viewport={{
-            amount:0.2
+            amount: 0.2,
+            once: true,
           }}
 
         >
 
 
           {
-            techStack.map((tech)=>(
+            techStack.map((tech) => (
 
               <motion.div
 
@@ -129,12 +147,12 @@ function Technologies() {
                 variants={itemVariants}
 
                 whileHover={{
-                  y:-8,
-                  scale:1.03
+                  y: -8,
+                  scale: 1.03,
                 }}
 
                 transition={{
-                  duration:0.3
+                  duration: 0.3,
                 }}
 
               >
@@ -142,6 +160,7 @@ function Technologies() {
                 <TechCard
                   tech={tech}
                 />
+
 
               </motion.div>
 
